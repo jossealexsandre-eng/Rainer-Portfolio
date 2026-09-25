@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 import { PortfolioData } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -11,23 +11,6 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
   const { language, t } = useLanguage();
   const th = t.hero;
   const portraitSrc = data.portraitUrl || '';
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsFullscreen(false);
-    };
-    if (isFullscreen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isFullscreen]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -165,85 +148,26 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
               <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 w-5 h-5 sm:w-6 sm:h-6 border-t-[2.5px] border-l-[2.5px] border-[#81929E] pointer-events-none z-10" />
               <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 w-5 h-5 sm:w-6 sm:h-6 border-b-[2.5px] border-r-[2.5px] border-[#81929E] pointer-events-none z-10" />
 
-              {/* Photo container — fills inner frame full-screen, click to open full-screen modal */}
-              <div 
-                onClick={() => setIsFullscreen(true)}
-                className="relative border border-[#CAC3B5] overflow-hidden bg-white rounded-[1px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group cursor-pointer"
-                title="Klik untuk melihat foto full screen"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden">
+              {/* Photo container with editorial aspect ratio */}
+              <div className="relative border border-[#CAC3B5] overflow-hidden bg-white rounded-[1px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   {portraitSrc ? (
                     <img
                       src={portraitSrc}
                       alt={th.portraitAlt}
-                      className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
                     />
                   ) : (
                     <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
                       <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
                     </div>
                   )}
-
-                  {/* Hover Fullscreen Badge */}
-                  <div className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded bg-[#1C1C1C]/75 backdrop-blur-sm text-white text-[10px] tracking-wider uppercase font-sans flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                    </svg>
-                    <span>Full Screen</span>
-                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Fullscreen Photo Lightbox Modal */}
-      <AnimatePresence>
-        {isFullscreen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={() => setIsFullscreen(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-8"
-          >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full flex flex-col items-center bg-[#EBE5DC] p-3 sm:p-5 rounded-md border border-[#DDD6CB] shadow-2xl"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsFullscreen(false)}
-                className="absolute -top-3.5 -right-3.5 sm:-top-4 sm:-right-4 w-9 h-9 rounded-full bg-[#1C1C1C] text-white flex items-center justify-center text-sm font-bold shadow-lg hover:bg-[#B4473F] transition-colors cursor-pointer z-10"
-                aria-label="Close fullscreen"
-              >
-                ✕
-              </button>
-
-              {/* Fullscreen Photo View */}
-              <div className="relative overflow-hidden rounded bg-white border border-[#CAC3B5] max-h-[75vh] w-full flex items-center justify-center">
-                <img
-                  src={portraitSrc}
-                  alt={th.portraitAlt}
-                  className="w-auto h-auto max-h-[75vh] max-w-full object-contain grayscale contrast-[1.05]"
-                />
-              </div>
-
-              {/* Caption */}
-              <div className="mt-3 text-center">
-                <p className="font-serif text-lg sm:text-xl text-[#1C1C1C] tracking-wide font-medium">{displayName}</p>
-                <p className="text-xs text-[#66645F] tracking-widest uppercase font-sans mt-0.5">{displaySubheadline}</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Bottom Scroll Indicator */}
       <div className="flex flex-col items-center justify-center pt-8 select-none">

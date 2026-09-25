@@ -284,6 +284,7 @@ export const ActivityCarousel: React.FC<ActivityCarouselProps> = ({
                     <img
                       src={item.url}
                       alt={item.title}
+                      style={{ objectPosition: item.objectPosition || 'center center' }}
                       className="w-full h-full object-cover"
                     />
                     {isActive && (

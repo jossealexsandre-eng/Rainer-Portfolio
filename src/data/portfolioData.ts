@@ -486,7 +486,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "大阪ゴルフクラブ（大阪府岬町）",
         aspect: "wide",
         category: "caddy",
-        objectPosition: "center 85%",
+        objectPosition: "center 65%",
       },
       {
         id: "gal-caddy-cert",
@@ -529,6 +529,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "日本・関西圏",
         aspect: "vertical",
         category: "daily",
+        objectPosition: "center 45%",
       },
       {
         id: "gal-daily-autumn",
@@ -543,6 +544,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "日本・関西圏",
         aspect: "vertical",
         category: "daily",
+        objectPosition: "center 55%",
       },
       {
         id: "gal-activity-odori",
@@ -559,7 +561,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 88%",
+        objectPosition: "center 32%",
       },
       {
         id: "gal-activity-worship",
@@ -576,6 +578,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "wide",
         category: "activity",
+        objectPosition: "center 20%",
       },
       {
         id: "gal-activity-teacher",
@@ -592,7 +595,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "スコラ・イマン（西ジャワ州カラワン）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 90%",
+        objectPosition: "center 60%",
       },
       {
         id: "gal-daily-friend",
@@ -607,6 +610,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "日本・大阪",
         aspect: "vertical",
         category: "daily",
+        objectPosition: "center 28%",
       },
       {
         id: "gal-daily-autumn-garden",
@@ -621,6 +625,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "日本・関西圏",
         aspect: "vertical",
         category: "daily",
+        objectPosition: "center 30%",
       },
       {
         id: "gal-daily-fushimi-inari",
@@ -665,7 +670,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "ジャカルタ・インターナショナル・カレッジ（ジャカルタ）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 80%",
+        objectPosition: "center 42%",
       },
       {
         id: "gal-jic-group-happi",
@@ -682,6 +687,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "wide",
         category: "activity",
+        objectPosition: "center 32%",
       },
     ],
     video: {

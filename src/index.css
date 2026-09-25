@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Shippori Mincho", "Noto Serif JP", "Cormorant Garamond", Georgia, serif;
+  --font-serif-jp: "Noto Serif JP", "Shippori Mincho", serif;
+  --font-display: "Cormorant Garamond", "Shippori Mincho", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+
+  --color-washi: #F7F5F0;
+  --color-washi-warm: #EFEBE3;
+  --color-ink: #1C1C1C;
+  --color-ink-muted: #66645F;
+  --color-indigo-jp: #263B50;
+  --color-vermilion: #B4473F;
+  --color-beige: #D8D0C3;
+  --color-border-subtle: #D9D5CC;
+}
+
+@layer utilities {
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  .writing-vertical-mixed {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+/* Washi paper subtle texture overlay */
+.washi-grain {
+  background-image: radial-gradient(rgba(38, 59, 80, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Print CV styling */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+

@@ -141,21 +141,22 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
             className="relative w-full max-w-[340px] sm:max-w-[390px] md:max-w-[430px] lg:max-w-[460px] xl:max-w-[490px]"
           >
-            {/* Outer cream mat frame (Passe-partout) */}
-            <div className="relative p-3 sm:p-4 bg-[#EBE5DC] border border-[#DDD6CB] shadow-[0_22px_55px_-16px_rgba(38,59,80,0.18),0_6px_20px_rgba(0,0,0,0.04)] rounded-[2px] transition-all duration-500">
+            {/* Outer cream mat frame (Passe-partout) matching Gambar 2 */}
+            <div className="relative p-4 sm:p-5 lg:p-6 bg-[#EBE5DC] border border-[#DDD6CB] shadow-[0_22px_55px_-16px_rgba(38,59,80,0.18),0_6px_20px_rgba(0,0,0,0.04)] rounded-[2px] transition-all duration-500">
               
               {/* Editorial Corner Crop Marks (L-brackets) at top-left and bottom-right */}
               <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 w-5 h-5 sm:w-6 sm:h-6 border-t-[2.5px] border-l-[2.5px] border-[#81929E] pointer-events-none z-10" />
               <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 w-5 h-5 sm:w-6 sm:h-6 border-b-[2.5px] border-r-[2.5px] border-[#81929E] pointer-events-none z-10" />
 
-              {/* Photo container with editorial aspect ratio */}
-              <div className="relative border border-[#CAC3B5] overflow-hidden bg-white rounded-[1px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
-                <div className="relative aspect-[3/4] overflow-hidden">
+              {/* Middle thin border line enclosing balanced inner mat */}
+              <div className="border border-[#CAC3B5] p-3 sm:p-4.5 bg-[#FAF8F4] rounded-[1px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+                {/* Photo container — 4:5 ratio with perfect edge-to-edge image fill */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CD] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
                   {portraitSrc ? (
                     <img
                       src={portraitSrc}
                       alt={th.portraitAlt}
-                      className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
+                      className="absolute inset-0 w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
                     />
                   ) : (
                     <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">

@@ -559,9 +559,9 @@ export const portfolioData: PortfolioData = {
         dateJapanese: "バンドン · 2024年",
         location: "Maranatha Christian University, Bandung",
         locationJapanese: "マラナタキリスト教大学（バンドン）",
-        aspect: "vertical",
+        aspect: "wide",
         category: "activity",
-        objectPosition: "center 70%",
+        objectPosition: "center center",
       },
       {
         id: "gal-activity-worship",

@@ -307,10 +307,12 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
                 if (embed.type === 'video') {
                   return (
                     <video
+                      key={embed.src}
+                      src={embed.src}
                       controls
                       playsInline
                       preload="metadata"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover bg-black"
                     >
                       <source src={embed.src} type="video/mp4" />
                       Your browser does not support HTML5 video playback.

@@ -695,9 +695,9 @@ export const portfolioData: PortfolioData = {
       description:
         "Visual impressions documenting daily caddy duties at Osaka Golf Club, natural coastal fairways, and personal living moments in Kansai, Japan.",
       notes: "Add MP4 file or video embed URL",
-      leftUrl: "",  // REEL 01 (Kiri): Course & Caddy Duties -> contoh: "/videos/reel-caddy.mp4"
-      url: "https://www.instagram.com/reel/DUhwXFvkohy/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==", // MAIN REEL (Tengah): Internship Feature
-      rightUrl: "", // REEL 02 (Kanan): Japan Life & Immersion -> contoh: "/videos/reel-daily.mp4"
+      leftUrl: "/videos/reel-kiri.mp4",   // REEL 01 (Kiri): Course & Caddy Duties
+      url: "/videos/reel-tengah.mp4",     // MAIN REEL (Tengah): Internship Feature
+      rightUrl: "/videos/reel-kanan.mp4", // REEL 02 (Kanan): Japan Life & Immersion
     },
   },
   personalInterest: {

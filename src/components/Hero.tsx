@@ -136,22 +136,22 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 relative flex justify-center lg:justify-end"
         >
-          {/* Portrait frame */}
+          {/* Portrait frame — Enlarged size matching user reference */}
           <motion.div
-            whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            className="relative w-full max-w-[290px] sm:max-w-[330px] lg:max-w-[370px]"
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            className="relative w-full max-w-[340px] sm:max-w-[390px] md:max-w-[430px] lg:max-w-[460px] xl:max-w-[490px]"
           >
-            {/* Outer cream mat frame (Passe-partout) matching Gambar 2 */}
-            <div className="relative p-3.5 sm:p-4.5 lg:p-5 bg-[#EBE5DC] border border-[#DDD6CB] shadow-[0_16px_40px_-12px_rgba(38,59,80,0.18),0_4px_12px_rgba(0,0,0,0.04)] rounded-[2px] transition-all duration-500">
+            {/* Outer cream mat frame (Passe-partout) matching reference */}
+            <div className="relative p-4 sm:p-5 lg:p-6 bg-[#EBE5DC] border border-[#DDD6CB] shadow-[0_22px_55px_-16px_rgba(38,59,80,0.18),0_6px_20px_rgba(0,0,0,0.04)] rounded-[2px] transition-all duration-500">
               
               {/* Editorial Corner Crop Marks (L-brackets) at top-left and bottom-right */}
-              <div className="absolute top-2 left-2 w-4.5 h-4.5 border-t-[2.5px] border-l-[2.5px] border-[#81929E] pointer-events-none" />
-              <div className="absolute bottom-2 right-2 w-4.5 h-4.5 border-b-[2.5px] border-r-[2.5px] border-[#81929E] pointer-events-none" />
+              <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 w-5 h-5 sm:w-6 sm:h-6 border-t-[2.5px] border-l-[2.5px] border-[#81929E] pointer-events-none" />
+              <div className="absolute bottom-2 right-2 sm:bottom-2.5 sm:right-2.5 w-5 h-5 sm:w-6 sm:h-6 border-b-[2.5px] border-r-[2.5px] border-[#81929E] pointer-events-none" />
 
               {/* Middle thin border line */}
-              <div className="border border-[#CAC3B5] p-3 sm:p-4 bg-[#FAF8F4] rounded-[1px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                {/* Photo container — 4:5 passport style */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CD] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
+              <div className="border border-[#CAC3B5] p-3.5 sm:p-5 lg:p-6 bg-[#FAF8F4] rounded-[1px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+                {/* Photo container — passport style */}
+                <div className="relative aspect-[3/4] overflow-hidden bg-white border border-[#E0D9CD] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
                   {portraitSrc ? (
                     <img
                       src={portraitSrc}
@@ -165,13 +165,6 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
                   )}
                 </div>
               </div>
-            </div>
-
-            {/* Decorative side label */}
-            <div className="absolute -right-7 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1 select-none hidden lg:flex">
-              <span className="w-px h-10 bg-gradient-to-b from-[#263B50]/60 to-transparent" />
-              <span className="writing-vertical-rl font-serif text-[9px] tracking-[0.3em] text-[#263B50]/50 uppercase font-semibold">Portrait</span>
-              <span className="w-px h-10 bg-gradient-to-t from-[#263B50]/60 to-transparent" />
             </div>
           </motion.div>
         </motion.div>

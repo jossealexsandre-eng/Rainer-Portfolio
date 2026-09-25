@@ -139,32 +139,32 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
           {/* Portrait frame */}
           <motion.div
             whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px]"
+            className="relative w-full max-w-[290px] sm:max-w-[330px] lg:max-w-[370px]"
           >
-            {/* Outer navy border — photo sits flush inside */}
-            <div className="relative p-[5px] bg-[#263B50] shadow-[0_20px_50px_-12px_rgba(38,59,80,0.35)] hover:shadow-[0_28px_60px_-12px_rgba(38,59,80,0.45)] transition-all duration-500 rounded-[3px]">
-              {/* Photo container — 4:5, fullscreen inside border */}
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#EFEBE3] group">
-                {portraitSrc ? (
-                  <img
-                    src={portraitSrc}
-                    alt={th.portraitAlt}
-                    className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
-                    <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
-                  </div>
-                )}
-                {/* Subtle bottom gradient for depth */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#263B50]/25 to-transparent pointer-events-none" />
-              </div>
+            {/* Outer cream mat frame (Passe-partout) matching Gambar 2 */}
+            <div className="relative p-3.5 sm:p-4.5 lg:p-5 bg-[#EBE5DC] border border-[#DDD6CB] shadow-[0_16px_40px_-12px_rgba(38,59,80,0.18),0_4px_12px_rgba(0,0,0,0.04)] rounded-[2px] transition-all duration-500">
+              
+              {/* Editorial Corner Crop Marks (L-brackets) at top-left and bottom-right */}
+              <div className="absolute top-2 left-2 w-4.5 h-4.5 border-t-[2.5px] border-l-[2.5px] border-[#81929E] pointer-events-none" />
+              <div className="absolute bottom-2 right-2 w-4.5 h-4.5 border-b-[2.5px] border-r-[2.5px] border-[#81929E] pointer-events-none" />
 
-              {/* Corner accent marks on the navy border */}
-              <div className="absolute top-1 left-1 w-4 h-4 border-t-[2px] border-l-[2px] border-[#F7F5F0]/50" />
-              <div className="absolute top-1 right-1 w-4 h-4 border-t-[2px] border-r-[2px] border-[#F7F5F0]/50" />
-              <div className="absolute bottom-1 left-1 w-4 h-4 border-b-[2px] border-l-[2px] border-[#F7F5F0]/50" />
-              <div className="absolute bottom-1 right-1 w-4 h-4 border-b-[2px] border-r-[2px] border-[#F7F5F0]/50" />
+              {/* Middle thin border line */}
+              <div className="border border-[#CAC3B5] p-3 sm:p-4 bg-[#FAF8F4] rounded-[1px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+                {/* Photo container — 4:5 passport style */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-white border border-[#E0D9CD] shadow-[0_2px_8px_rgba(0,0,0,0.06)] group">
+                  {portraitSrc ? (
+                    <img
+                      src={portraitSrc}
+                      alt={th.portraitAlt}
+                      className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
+                      <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Decorative side label */}

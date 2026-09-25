@@ -1,13 +1,56 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Film, Upload, Link as LinkIcon } from 'lucide-react';
+import { Film, Upload, Link as LinkIcon, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+
+const getEmbedInfo = (src: string) => {
+  if (!src) return { type: 'none' as const };
+
+  const trimmed = src.trim();
+
+  // Instagram Reel or Post
+  const igMatch = trimmed.match(/instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)/i);
+  if (igMatch && igMatch[1]) {
+    return {
+      type: 'instagram' as const,
+      embedUrl: `https://www.instagram.com/reel/${igMatch[1]}/embed/`,
+      originalUrl: trimmed,
+    };
+  }
+
+  // YouTube Shorts or standard video
+  const ytShorts = trimmed.match(/youtube\.com\/shorts\/([A-Za-z0-9_-]+)/i);
+  if (ytShorts && ytShorts[1]) {
+    return {
+      type: 'youtube' as const,
+      embedUrl: `https://www.youtube.com/embed/${ytShorts[1]}?autoplay=0&rel=0`,
+      originalUrl: trimmed,
+    };
+  }
+
+  const ytWatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]+)/i);
+  if (ytWatch && ytWatch[1]) {
+    return {
+      type: 'youtube' as const,
+      embedUrl: `https://www.youtube.com/embed/${ytWatch[1]}?autoplay=0&rel=0`,
+      originalUrl: trimmed,
+    };
+  }
+
+  // Native HTML5 video file or blob
+  return {
+    type: 'video' as const,
+    src: trimmed,
+  };
+};
 
 interface VideoShowcaseProps {
   videoData: {
     title: string;
     titleJapanese?: string;
     url?: string;
+    leftUrl?: string;
+    rightUrl?: string;
     description: string;
     descriptionJapanese?: string;
     notes: string;
@@ -21,13 +64,21 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
   const t = fullT.internship;
 
   const [videoSources, setVideoSources] = useState<{ [key in SlotKey]: string }>({
-    left: '',
+    left: videoData.leftUrl || '',
     center: videoData.url || '',
-    right: '',
+    right: videoData.rightUrl || '',
   });
   const [activeSlotForModal, setActiveSlotForModal] = useState<SlotKey>('center');
   const [showInputModal, setShowInputModal] = useState(false);
   const [customUrl, setCustomUrl] = useState('');
+
+  React.useEffect(() => {
+    setVideoSources({
+      left: videoData.leftUrl || '',
+      center: videoData.url || '',
+      right: videoData.rightUrl || '',
+    });
+  }, [videoData.url, videoData.leftUrl, videoData.rightUrl]);
 
   const slots = [
     {
@@ -213,53 +264,98 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
                 </label>
               )}
 
-              {src ? (
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                >
-                  <source src={src} type="video/mp4" />
-                  Your browser does not support HTML5 video playback.
-                </video>
-              ) : (
-                /* Editorial Video Placeholder */
-                <div className="p-6 text-center text-[#F7F5F0] flex flex-col items-center justify-center space-y-3.5 w-full">
-                  <div
-                    className={`rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-[#F7F5F0] ${
-                      isCenter ? 'w-14 h-14' : 'w-11 h-11'
-                    }`}
-                  >
-                    <Film className={isCenter ? 'w-6 h-6 text-[#B4473F]' : 'w-5 h-5 text-[#B4473F]'} />
-                  </div>
+              {(() => {
+                const embed = getEmbedInfo(src);
 
-                  <div className="space-y-1">
-                    <span className="font-serif tracking-[0.2em] text-[11px] sm:text-xs uppercase text-[#EFEBE3] block font-semibold">
-                      {slot.sublabel}
-                    </span>
-                    <p className="text-[11px] text-[#D8D0C3]/75 font-sans line-clamp-2 px-2">
-                      {isCenter ? displayNotes : (language === 'ja' ? '9:16縦型動画を追加' : 'Add 9:16 portrait video')}
-                    </p>
-                    <span className="inline-block mt-1.5 px-2 py-0.5 text-[9px] tracking-widest uppercase font-mono bg-white/10 text-[#D8D0C3] rounded-full border border-white/10">
-                      {language === 'ja' ? '9:16 縦型動画' : '9:16 Portrait'}
-                    </span>
-                  </div>
-
-                  <div className="pt-1">
-                    <label className="cursor-pointer px-3.5 py-1.5 bg-[#F7F5F0] text-[#1C1C1C] text-[11px] uppercase tracking-wider font-sans rounded-[2px] hover:bg-white transition-colors flex items-center gap-1.5 shadow-sm font-medium">
-                      <Upload className="w-3 h-3" />
-                      <span>{t.uploadMp4}</span>
-                      <input
-                        type="file"
-                        accept="video/mp4,video/webm"
-                        className="hidden"
-                        onChange={(e) => handleVideoUpload(slot.key, e)}
+                if (embed.type === 'instagram') {
+                  return (
+                    <div className="w-full h-full relative bg-black flex items-center justify-center">
+                      <iframe
+                        src={embed.embedUrl}
+                        className="w-full h-full border-0"
+                        allowFullScreen
+                        scrolling="no"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        title={slot.label}
                       />
-                    </label>
+                      <a
+                        href={embed.originalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-3 right-3 z-20 px-2.5 py-1 bg-black/80 hover:bg-black text-[#F7F5F0] text-[10px] font-sans rounded-full flex items-center gap-1.5 border border-white/20 transition-all opacity-85 hover:opacity-100 shadow-md"
+                        title="Buka di Instagram"
+                      >
+                        <ExternalLink className="w-3 h-3 text-[#B4473F]" />
+                        <span>Instagram</span>
+                      </a>
+                    </div>
+                  );
+                }
+
+                if (embed.type === 'youtube') {
+                  return (
+                    <iframe
+                      src={embed.embedUrl}
+                      className="w-full h-full border-0 bg-black"
+                      allowFullScreen
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      title={slot.label}
+                    />
+                  );
+                }
+
+                if (embed.type === 'video') {
+                  return (
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full object-cover"
+                    >
+                      <source src={embed.src} type="video/mp4" />
+                      Your browser does not support HTML5 video playback.
+                    </video>
+                  );
+                }
+
+                return (
+                  /* Editorial Video Placeholder */
+                  <div className="p-6 text-center text-[#F7F5F0] flex flex-col items-center justify-center space-y-3.5 w-full">
+                    <div
+                      className={`rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-[#F7F5F0] ${
+                        isCenter ? 'w-14 h-14' : 'w-11 h-11'
+                      }`}
+                    >
+                      <Film className={isCenter ? 'w-6 h-6 text-[#B4473F]' : 'w-5 h-5 text-[#B4473F]'} />
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="font-serif tracking-[0.2em] text-[11px] sm:text-xs uppercase text-[#EFEBE3] block font-semibold">
+                        {slot.sublabel}
+                      </span>
+                      <p className="text-[11px] text-[#D8D0C3]/75 font-sans line-clamp-2 px-2">
+                        {isCenter ? displayNotes : (language === 'ja' ? '9:16縦型動画を追加' : 'Add 9:16 portrait video')}
+                      </p>
+                      <span className="inline-block mt-1.5 px-2 py-0.5 text-[9px] tracking-widest uppercase font-mono bg-white/10 text-[#D8D0C3] rounded-full border border-white/10">
+                        {language === 'ja' ? '9:16 縦型動画' : '9:16 Portrait'}
+                      </span>
+                    </div>
+
+                    <div className="pt-1">
+                      <label className="cursor-pointer px-3.5 py-1.5 bg-[#F7F5F0] text-[#1C1C1C] text-[11px] uppercase tracking-wider font-sans rounded-[2px] hover:bg-white transition-colors flex items-center gap-1.5 shadow-sm font-medium">
+                        <Upload className="w-3 h-3" />
+                        <span>{t.uploadMp4}</span>
+                        <input
+                          type="file"
+                          accept="video/mp4,video/webm"
+                          className="hidden"
+                          onChange={(e) => handleVideoUpload(slot.key, e)}
+                        />
+                      </label>
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
             </motion.div>
           );
         })}

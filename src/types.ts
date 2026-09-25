@@ -178,6 +178,8 @@ export interface PortfolioData {
       title: string;
       titleJapanese?: string;
       url?: string;
+      leftUrl?: string;
+      rightUrl?: string;
       description: string;
       descriptionJapanese?: string;
       notes: string;

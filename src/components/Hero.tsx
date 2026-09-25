@@ -136,38 +136,35 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 relative flex justify-center lg:justify-end"
         >
-          {/* Outer decorative border wrapper */}
+          {/* Portrait frame */}
           <motion.div
             whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            className="relative w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[320px]"
+            className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px]"
           >
-            {/* Outer frame: thick navy border */}
-            <div className="relative p-[6px] bg-[#263B50] shadow-[0_20px_50px_-12px_rgba(38,59,80,0.35)] hover:shadow-[0_28px_60px_-12px_rgba(38,59,80,0.45)] transition-all duration-500 rounded-[3px]">
-              {/* Inner cream mat */}
-              <div className="p-[5px] bg-[#F7F5F0]">
-                {/* Photo container — 9:16 */}
-                <div className="relative aspect-[9/16] overflow-hidden bg-[#EFEBE3] group">
-                  {portraitSrc ? (
-                    <img
-                      src={portraitSrc}
-                      alt={th.portraitAlt}
-                      className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
-                      <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
-                    </div>
-                  )}
-                  {/* Subtle bottom gradient for depth */}
-                  <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#263B50]/20 to-transparent pointer-events-none" />
-                </div>
+            {/* Outer navy border — photo sits flush inside */}
+            <div className="relative p-[5px] bg-[#263B50] shadow-[0_20px_50px_-12px_rgba(38,59,80,0.35)] hover:shadow-[0_28px_60px_-12px_rgba(38,59,80,0.45)] transition-all duration-500 rounded-[3px]">
+              {/* Photo container — 4:5, fullscreen inside border */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#EFEBE3] group">
+                {portraitSrc ? (
+                  <img
+                    src={portraitSrc}
+                    alt={th.portraitAlt}
+                    className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
+                    <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
+                  </div>
+                )}
+                {/* Subtle bottom gradient for depth */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#263B50]/25 to-transparent pointer-events-none" />
               </div>
 
-              {/* Corner accent marks (outside inner mat) */}
-              <div className="absolute top-1 left-1 w-4 h-4 border-t-[2px] border-l-[2px] border-[#F7F5F0]/60" />
-              <div className="absolute top-1 right-1 w-4 h-4 border-t-[2px] border-r-[2px] border-[#F7F5F0]/60" />
-              <div className="absolute bottom-1 left-1 w-4 h-4 border-b-[2px] border-l-[2px] border-[#F7F5F0]/60" />
-              <div className="absolute bottom-1 right-1 w-4 h-4 border-b-[2px] border-r-[2px] border-[#F7F5F0]/60" />
+              {/* Corner accent marks on the navy border */}
+              <div className="absolute top-1 left-1 w-4 h-4 border-t-[2px] border-l-[2px] border-[#F7F5F0]/50" />
+              <div className="absolute top-1 right-1 w-4 h-4 border-t-[2px] border-r-[2px] border-[#F7F5F0]/50" />
+              <div className="absolute bottom-1 left-1 w-4 h-4 border-b-[2px] border-l-[2px] border-[#F7F5F0]/50" />
+              <div className="absolute bottom-1 right-1 w-4 h-4 border-b-[2px] border-r-[2px] border-[#F7F5F0]/50" />
             </div>
 
             {/* Decorative side label */}

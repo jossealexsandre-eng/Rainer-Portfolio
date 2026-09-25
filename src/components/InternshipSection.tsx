@@ -194,21 +194,21 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center justify-center gap-3 text-xs font-serif text-[#263B50] tracking-[0.25em] uppercase mb-16 select-none"
+        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 text-[11px] sm:text-xs font-serif text-[#263B50] tracking-[0.15em] sm:tracking-[0.25em] uppercase mb-12 sm:mb-16 select-none max-w-full px-2"
       >
-        <span className="px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px]">
+        <span className="px-2.5 sm:px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px] shadow-2xs whitespace-nowrap">
           {language === 'ja' ? 'パプア州ビアク' : 'BIAK, PAPUA'}
         </span>
-        <span className="text-[#B4473F] font-bold">→</span>
-        <span className="px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px]">
+        <span className="text-[#B4473F] font-bold select-none text-xs">→</span>
+        <span className="px-2.5 sm:px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px] shadow-2xs whitespace-nowrap">
           {language === 'ja' ? 'ジャカルタ' : 'JAKARTA'}
         </span>
-        <span className="text-[#B4473F] font-bold">→</span>
-        <span className="px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px]">
+        <span className="text-[#B4473F] font-bold select-none text-xs">→</span>
+        <span className="px-2.5 sm:px-3 py-1 bg-white border border-[#D9D5CC] rounded-[2px] shadow-2xs whitespace-nowrap">
           {language === 'ja' ? 'バンドン' : 'BANDUNG'}
         </span>
-        <span className="text-[#B4473F] font-bold">→</span>
-        <span className="px-3.5 py-1 bg-[#263B50] text-[#F7F5F0] rounded-[2px] font-semibold shadow-xs">
+        <span className="text-[#B4473F] font-bold select-none text-xs">→</span>
+        <span className="px-3 sm:px-3.5 py-1 bg-[#263B50] text-[#F7F5F0] rounded-[2px] font-semibold shadow-xs whitespace-nowrap">
           {language === 'ja' ? '日本・大阪' : 'OSAKA, JAPAN'}
         </span>
       </motion.div>
@@ -268,14 +268,14 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
           )}
 
           {/* Floating Badges on Hero Image */}
-          <div className="absolute top-4 left-4 z-10 pointer-events-none">
-            <span className="px-3.5 py-1.5 bg-[#263B50]/90 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs uppercase font-sans tracking-widest text-[#F7F5F0] rounded-[2px] shadow-sm">
+          <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-10 pointer-events-none">
+            <span className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 bg-[#263B50]/90 backdrop-blur-md border border-white/20 text-[9px] sm:text-xs uppercase font-sans tracking-wider sm:tracking-widest text-[#F7F5F0] rounded-[2px] shadow-sm">
               {language === 'ja' ? '大阪ゴルフクラブ · キャディ課' : 'OSAKA GOLF CLUB · CADDY DIVISION'}
             </span>
           </div>
 
-          <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
-            <span className="px-3 py-1 bg-[#F7F5F0]/95 backdrop-blur-sm border border-[#D9D5CC] text-[10px] uppercase font-mono tracking-widest text-[#263B50] rounded-[2px]">
+          <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 z-10 pointer-events-none">
+            <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-[#F7F5F0]/95 backdrop-blur-sm border border-[#D9D5CC] text-[9px] sm:text-[10px] uppercase font-mono tracking-wider sm:tracking-widest text-[#263B50] rounded-[2px]">
               {language === 'ja' ? '大阪府岬町 · 2025-2026年' : 'MISAKI, OSAKA · 2025-2026'}
             </span>
           </div>
@@ -482,7 +482,7 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setNarrativeTab('experience')}
-                className={`flex-1 py-3 px-3 text-xs font-sans uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-3 text-[10px] sm:text-xs font-sans uppercase tracking-normal sm:tracking-wider transition-colors cursor-pointer text-center ${
                   narrativeTab === 'experience'
                     ? 'bg-[#FFFFFF] text-[#263B50] font-semibold border-b-2 border-[#B4473F]'
                     : 'text-[#66645F] hover:text-[#1C1C1C]'
@@ -495,7 +495,7 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setNarrativeTab('learning')}
-                className={`flex-1 py-3 px-3 text-xs font-sans uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-3 text-[10px] sm:text-xs font-sans uppercase tracking-normal sm:tracking-wider transition-colors cursor-pointer text-center ${
                   narrativeTab === 'learning'
                     ? 'bg-[#FFFFFF] text-[#263B50] font-semibold border-b-2 border-[#B4473F]'
                     : 'text-[#66645F] hover:text-[#1C1C1C]'
@@ -508,7 +508,7 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setNarrativeTab('reflection')}
-                className={`flex-1 py-3 px-3 text-xs font-sans uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`flex-1 py-2.5 sm:py-3 px-1.5 sm:px-3 text-[10px] sm:text-xs font-sans uppercase tracking-normal sm:tracking-wider transition-colors cursor-pointer text-center ${
                   narrativeTab === 'reflection'
                     ? 'bg-[#FFFFFF] text-[#263B50] font-semibold border-b-2 border-[#B4473F]'
                     : 'text-[#66645F] hover:text-[#1C1C1C]'

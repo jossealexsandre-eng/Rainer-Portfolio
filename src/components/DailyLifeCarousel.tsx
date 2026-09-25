@@ -101,9 +101,9 @@ export const DailyLifeCarousel: React.FC<DailyLifeCarouselProps> = ({
   return (
     <div className="space-y-4">
       {/* Subheader with View Switcher */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs font-serif tracking-[0.2em] text-[#B4473F] uppercase font-semibold">
-          <span className="w-2 h-2 rounded-full bg-[#B4473F]" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2 text-xs font-serif tracking-[0.15em] sm:tracking-[0.2em] text-[#B4473F] uppercase font-semibold">
+          <span className="w-2 h-2 rounded-full bg-[#B4473F] shrink-0" />
           <span>
             {language === 'ja'
               ? '日本での日常生活と文化探訪（スライドショー）'

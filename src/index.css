@@ -27,6 +27,17 @@
   }
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Washi paper subtle texture overlay */
 .washi-grain {
   background-image: radial-gradient(rgba(38, 59, 80, 0.04) 1px, transparent 0);

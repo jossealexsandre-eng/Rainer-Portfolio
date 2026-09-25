@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-6 text-xs font-sans tracking-[0.15em] text-[#66645F] uppercase">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs font-sans tracking-[0.15em] text-[#66645F] uppercase">
             <span>{tf.locationBiak}</span>
             <span>·</span>
             <span>{tf.locationOsaka}</span>

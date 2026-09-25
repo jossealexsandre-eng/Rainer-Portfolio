@@ -309,7 +309,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 
                 {/* Footer link to view full size */}
                 {selectedCert.imageUrl && (
-                  <div className="pt-4 border-t border-[#D9D5CC] flex items-center justify-between text-xs font-sans">
+                  <div className="pt-4 border-t border-[#D9D5CC] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs font-sans">
                     <a
                       href={selectedCert.imageUrl}
                       target="_blank"

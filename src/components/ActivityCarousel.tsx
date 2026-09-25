@@ -99,9 +99,9 @@ export const ActivityCarousel: React.FC<ActivityCarouselProps> = ({
   return (
     <div className="space-y-4">
       {/* Subheader with View Switcher */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs font-serif tracking-[0.2em] text-[#66645F] uppercase font-semibold">
-          <span className="w-2 h-2 rounded-full bg-[#66645F]" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2 text-xs font-serif tracking-[0.15em] sm:tracking-[0.2em] text-[#66645F] uppercase font-semibold">
+          <span className="w-2 h-2 rounded-full bg-[#66645F] shrink-0" />
           <span>
             {language === 'ja'
               ? '学内活動・地域貢献・文化発信'

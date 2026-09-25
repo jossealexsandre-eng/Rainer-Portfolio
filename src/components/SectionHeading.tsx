@@ -37,11 +37,11 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       } ${className}`}
     >
       <div
-        className={`flex items-center gap-3 mb-2 ${
+        className={`flex flex-wrap items-center gap-2 sm:gap-3 mb-2 ${
           align === 'center' ? 'justify-center' : ''
         }`}
       >
-        <span className="font-serif text-sm tracking-[0.25em] text-[#B4473F] font-semibold">
+        <span className="font-serif text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] text-[#B4473F] font-semibold">
           {primaryTitle}
         </span>
         <motion.span
@@ -49,9 +49,9 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="h-px w-8 bg-[#D9D5CC] origin-left"
+          className="h-px w-6 sm:w-8 bg-[#D9D5CC] origin-left"
         />
-        <span className="text-xs uppercase tracking-[0.2em] font-sans text-[#66645F]">
+        <span className="text-[11px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-sans text-[#66645F]">
           {secondaryTag}
         </span>
       </div>

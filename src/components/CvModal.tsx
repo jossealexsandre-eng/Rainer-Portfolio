@@ -180,7 +180,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose, data }) => {
                 </p>
               </div>
 
-              <div className="text-right sm:text-right text-xs text-[#66645F] space-y-0.5 font-mono">
+              <div className="text-left sm:text-right text-xs text-[#66645F] space-y-0.5 font-mono">
                 <p>{data.contact.email}</p>
                 <p>{data.contact.whatsappDisplay}</p>
                 <p>{language === 'ja' ? '日本・大阪府 / インドネシア' : data.contact.location}</p>

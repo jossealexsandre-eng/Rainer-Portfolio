@@ -213,7 +213,7 @@ export const JourneyMap: React.FC<JourneyMapProps> = ({ journey }) => {
               {milestoneDescription}
             </p>
 
-            <div className="pt-4 flex items-center gap-4 text-xs font-serif text-[#263B50] tracking-[0.2em] uppercase font-semibold">
+            <div className="pt-4 flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] sm:text-xs font-serif text-[#263B50] tracking-[0.15em] sm:tracking-[0.2em] uppercase font-semibold">
               <span>{language === 'ja' ? 'ビアク島' : 'BIAK'}</span>
               <span className="text-[#B4473F]">→</span>
               <span>{language === 'ja' ? 'ジャカルタ' : 'JAKARTA'}</span>

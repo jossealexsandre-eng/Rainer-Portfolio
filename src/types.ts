@@ -57,6 +57,7 @@ export interface InternshipImage {
   locationJapanese?: string;
   aspect: 'horizontal' | 'vertical' | 'square' | 'wide';
   category?: 'caddy' | 'daily' | 'activity' | 'all';
+  objectPosition?: string;
 }
 
 export interface SkillItem {

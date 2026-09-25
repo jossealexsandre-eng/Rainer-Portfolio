@@ -486,6 +486,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "大阪ゴルフクラブ（大阪府岬町）",
         aspect: "wide",
         category: "caddy",
+        objectPosition: "center 85%",
       },
       {
         id: "gal-caddy-cert",
@@ -556,8 +557,9 @@ export const portfolioData: PortfolioData = {
         dateJapanese: "バンドン · 2024年",
         location: "Maranatha Christian University, Bandung",
         locationJapanese: "マラナタキリスト教大学（バンドン）",
-        aspect: "wide",
+        aspect: "vertical",
         category: "activity",
+        objectPosition: "center 88%",
       },
       {
         id: "gal-activity-worship",
@@ -590,6 +592,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "スコラ・イマン（西ジャワ州カラワン）",
         aspect: "vertical",
         category: "activity",
+        objectPosition: "center 90%",
       },
       {
         id: "gal-daily-friend",
@@ -662,6 +665,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "ジャカルタ・インターナショナル・カレッジ（ジャカルタ）",
         aspect: "vertical",
         category: "activity",
+        objectPosition: "center 80%",
       },
       {
         id: "gal-jic-group-happi",

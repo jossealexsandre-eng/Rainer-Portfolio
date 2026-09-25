@@ -161,6 +161,7 @@ export const DailyLifeCarousel: React.FC<DailyLifeCarouselProps> = ({
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ objectPosition: currentItem.objectPosition || 'center center' }}
                     className="absolute inset-0 w-full h-full object-cover cursor-pointer"
                     onClick={() => onOpenLightbox(originalIdx)}
                   />
@@ -328,6 +329,7 @@ export const DailyLifeCarousel: React.FC<DailyLifeCarouselProps> = ({
                     src={item.url}
                     alt={item.title}
                     loading="lazy"
+                    style={{ objectPosition: item.objectPosition || 'center center' }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-3 left-3">

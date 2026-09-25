@@ -97,6 +97,12 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({ experience, on
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  style={{
+                    objectPosition:
+                      photos[photoIndex].includes('daily-formal') ? 'center 78%' :
+                      photos[photoIndex].includes('jic-1') ? 'center 75%' :
+                      photos[photoIndex].includes('jic-4') ? 'center 40%' : 'center center'
+                  }}
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>

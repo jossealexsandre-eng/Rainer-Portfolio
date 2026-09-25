@@ -157,6 +157,7 @@ export const ActivityCarousel: React.FC<ActivityCarouselProps> = ({
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ objectPosition: currentItem.objectPosition || 'center center' }}
                     className="absolute inset-0 w-full h-full object-cover cursor-pointer"
                     onClick={() => onOpenLightbox(originalIdx)}
                   />
@@ -319,11 +320,12 @@ export const ActivityCarousel: React.FC<ActivityCarouselProps> = ({
                 onClick={() => onOpenLightbox(originalIndex)}
                 className="group cursor-pointer bg-[#FFFFFF] border border-[#D9D5CC] hover:border-[#263B50]/50 rounded-[2px] overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#EFEBE3]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#EFEBE3]">
                   <img
                     src={item.url}
                     alt={item.title}
                     loading="lazy"
+                    style={{ objectPosition: item.objectPosition || 'center center' }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-3 left-3">

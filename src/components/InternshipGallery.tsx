@@ -212,6 +212,7 @@ export const InternshipGallery: React.FC<InternshipGalleryProps> = ({ gallery })
                           src={item.url}
                           alt={item.title}
                           loading="lazy"
+                          style={{ objectPosition: item.objectPosition || 'center center' }}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <HoverOverlay />
@@ -318,6 +319,7 @@ export const InternshipGallery: React.FC<InternshipGalleryProps> = ({ gallery })
                       src={item.url}
                       alt={item.title}
                       loading="lazy"
+                      style={{ objectPosition: item.objectPosition || 'center center' }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <HoverOverlay />

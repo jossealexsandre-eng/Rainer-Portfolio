@@ -230,12 +230,13 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
 
       {/* HERO IMAGE BANNER */}
       <div className="mb-24 space-y-4">
-        <div className="relative aspect-[16/7] sm:aspect-[16/6] w-full bg-[#EFEBE3] border-2 border-[#263B50]/30 rounded-[2px] overflow-hidden shadow-md">
+        <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full max-w-4xl mx-auto bg-[#1C1C1C] border-2 border-[#263B50]/30 rounded-[2px] overflow-hidden shadow-md">
           {heroImageSrc ? (
             <img
               src={heroImageSrc}
               alt="Osaka Golf Club Caddy Team"
-              className="w-full h-full object-cover object-[center_70%]"
+              style={{ objectPosition: 'center 85%' }}
+              className="w-full h-full object-cover"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-[#F7F5F0] to-[#EFEBE3]">

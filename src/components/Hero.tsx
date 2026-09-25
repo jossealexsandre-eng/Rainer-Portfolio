@@ -147,18 +147,35 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
         >
           <motion.div
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] bg-[#EFEBE3] border border-[#D9D5CC] p-4 shadow-[0_12px_40px_-15px_rgba(38,59,80,0.08)] hover:shadow-[0_18px_50px_-15px_rgba(38,59,80,0.15)] transition-shadow"
+            className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] bg-white border border-[#D9D5CC] p-1.5 sm:p-2 shadow-[0_16px_45px_-15px_rgba(38,59,80,0.12)] hover:shadow-[0_22px_55px_-15px_rgba(38,59,80,0.18)] transition-all rounded-[2px]"
           >
             {/* Inner frame */}
-            <div className="relative w-full h-full border border-[#D9D5CC]/80 bg-[#F7F5F0] overflow-hidden flex flex-col items-center justify-center text-center p-6 group">
+            <div className="relative w-full h-full border border-[#D9D5CC]/60 bg-[#F7F5F0] overflow-hidden group">
               {portraitSrc ? (
-                <img
-                  src={portraitSrc}
-                  alt={th.portraitAlt}
-                  className="w-full h-full object-cover grayscale contrast-[1.05] group-hover:scale-102 transition-transform duration-700"
-                />
+                <>
+                  <img
+                    src={portraitSrc}
+                    alt={th.portraitAlt}
+                    className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
+                  />
+                  {/* Subtle upload control on hover */}
+                  <label
+                    htmlFor="portrait-upload"
+                    title={language === 'ja' ? '写真を変更' : 'Upload Portrait'}
+                    className="absolute bottom-3 right-3 z-20 cursor-pointer p-2 rounded-full bg-black/60 hover:bg-black/85 text-white/90 hover:text-white border border-white/20 transition-all opacity-0 group-hover:opacity-100 shadow-md backdrop-blur-xs"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    <input
+                      id="portrait-upload"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                  </label>
+                </>
               ) : (
-                <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-xs p-4">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-xs p-4 h-full">
                   <div className="w-12 h-12 rounded-full border border-[#D9D5CC] flex items-center justify-center text-[#263B50]/60">
                     <span className="font-serif text-lg">肖像</span>
                   </div>
@@ -187,7 +204,6 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
                   </label>
                 </div>
               )}
-
             </div>
 
             {/* Corner aesthetic registration lines */}

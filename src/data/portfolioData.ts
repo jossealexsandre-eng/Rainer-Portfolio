@@ -670,7 +670,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "ジャカルタ・インターナショナル・カレッジ（ジャカルタ）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 42%",
+        objectPosition: "center 35%",
       },
       {
         id: "gal-jic-group-happi",

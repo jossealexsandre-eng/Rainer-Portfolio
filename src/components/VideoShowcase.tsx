@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Film, Upload, Link as LinkIcon, ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Film, Upload, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const getEmbedInfo = (src: string) => {
@@ -68,10 +68,6 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
     center: videoData.url || '',
     right: videoData.rightUrl || '',
   });
-  const [activeSlotForModal, setActiveSlotForModal] = useState<SlotKey>('center');
-  const [showInputModal, setShowInputModal] = useState(false);
-  const [customUrl, setCustomUrl] = useState('');
-
   React.useEffect(() => {
     setVideoSources({
       left: videoData.leftUrl || '',
@@ -109,15 +105,6 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
     }
   };
 
-  const handleUrlSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (customUrl.trim()) {
-      setVideoSources((prev) => ({ ...prev, [activeSlotForModal]: customUrl.trim() }));
-      setCustomUrl('');
-      setShowInputModal(false);
-    }
-  };
-
   const displayDescription =
     language === 'ja'
       ? '名門大阪ゴルフクラブでのコース業務、乗用カート運行、プレイヤーとのスポーツ敬語対話、そして神戸・大阪での生活を収めたショート動画記録。'
@@ -146,80 +133,7 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ videoData }) => {
             {t.videoArchiveTag}
           </span>
         </div>
-        <motion.button
-          type="button"
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.96 }}
-          onClick={() => setShowInputModal(!showInputModal)}
-          className="text-xs text-[#263B50] hover:text-[#B4473F] font-sans uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
-        >
-          <LinkIcon className="w-3 h-3" />
-          <span>{t.setVideoSource}</span>
-        </motion.button>
       </div>
-
-      <AnimatePresence>
-        {showInputModal && (
-          <motion.form
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            onSubmit={handleUrlSubmit}
-            className="p-4 bg-[#EFEBE3] border border-[#D9D5CC] rounded-[2px] flex flex-col gap-3 max-w-2xl mx-auto overflow-hidden"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#D9D5CC] pb-2">
-              <span className="text-xs uppercase tracking-wider font-sans text-[#263B50] font-semibold">
-                {t.selectVideoSlot}
-              </span>
-              <div className="flex items-center gap-1.5">
-                {slots.map((s) => (
-                  <button
-                    key={s.key}
-                    type="button"
-                    onClick={() => setActiveSlotForModal(s.key)}
-                    className={`px-2.5 py-1 text-[11px] font-sans uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer ${
-                      activeSlotForModal === s.key
-                        ? 'bg-[#263B50] text-[#F7F5F0] font-medium'
-                        : 'bg-white text-[#66645F] border border-[#D9D5CC] hover:bg-[#F7F5F0]'
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 items-center">
-              <input
-                type="url"
-                placeholder={language === 'ja' ? '動画の直接リンクURLを入力してください...' : `Paste video URL for ${activeSlotForModal.toUpperCase()}...`}
-                value={customUrl}
-                onChange={(e) => setCustomUrl(e.target.value)}
-                className="w-full text-xs font-sans px-3 py-2 bg-white border border-[#D9D5CC] rounded-[2px] focus:outline-none focus:border-[#263B50]"
-              />
-              <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-[#263B50] text-[#F7F5F0] text-xs font-sans uppercase tracking-wider rounded-[2px] cursor-pointer"
-                >
-                  {t.saveUrl}
-                </button>
-                <label className="cursor-pointer px-3 py-2 border border-[#D9D5CC] bg-white text-xs text-[#1C1C1C] rounded-[2px] flex items-center gap-1 hover:bg-[#FAF8F5] transition-colors">
-                  <Upload className="w-3 h-3" />
-                  <span>{language === 'ja' ? 'アップロード' : 'Upload'}</span>
-                  <input
-                    type="file"
-                    accept="video/mp4,video/webm"
-                    className="hidden"
-                    onChange={(e) => handleVideoUpload(activeSlotForModal, e)}
-                  />
-                </label>
-              </div>
-            </div>
-          </motion.form>
-        )}
-      </AnimatePresence>
 
       {/* 3 Video Cards Showcase Container (Portrait 9:16) */}
       <div className="w-full flex flex-row items-center justify-start md:justify-center gap-4 sm:gap-6 lg:gap-8 pt-4 pb-4 overflow-x-auto no-scrollbar px-2 sm:px-0">

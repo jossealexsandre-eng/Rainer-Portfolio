@@ -561,7 +561,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 32%",
+        objectPosition: "center 70%",
       },
       {
         id: "gal-activity-worship",
@@ -578,7 +578,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "wide",
         category: "activity",
-        objectPosition: "center 20%",
+        objectPosition: "center 65%",
       },
       {
         id: "gal-activity-teacher",
@@ -595,7 +595,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "スコラ・イマン（西ジャワ州カラワン）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 60%",
+        objectPosition: "center 65%",
       },
       {
         id: "gal-daily-friend",
@@ -670,7 +670,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "ジャカルタ・インターナショナル・カレッジ（ジャカルタ）",
         aspect: "vertical",
         category: "activity",
-        objectPosition: "center 35%",
+        objectPosition: "center 40%",
       },
       {
         id: "gal-jic-group-happi",
@@ -687,7 +687,7 @@ export const portfolioData: PortfolioData = {
         locationJapanese: "マラナタキリスト教大学（バンドン）",
         aspect: "wide",
         category: "activity",
-        objectPosition: "center 32%",
+        objectPosition: "center 25%",
       },
     ],
     video: {

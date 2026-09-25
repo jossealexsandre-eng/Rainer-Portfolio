@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
               className="writing-vertical-rl font-serif text-sm tracking-[0.35em] text-[#B4473F] select-none py-1 border-r border-[#D9D5CC]/80 pr-3 font-semibold"
               title={th.storyLabel}
             >
-              {language === 'ja' ? '私の物語' : 'MY STORY'}
+              {language === 'ja' ? 'ポートフォリオ' : 'PORTFOLIO'}
             </div>
             <div className="flex flex-col text-xs font-sans tracking-[0.2em] text-[#66645F] uppercase space-y-1">
               <span>{displayHometown}</span>

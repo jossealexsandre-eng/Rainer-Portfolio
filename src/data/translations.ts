@@ -221,7 +221,7 @@ export const translations: Record<SiteLanguage, Translations> = {
       cvButton: '履歴書プレビュー',
     },
     hero: {
-      storyLabel: '私の物語',
+      storyLabel: 'ポートフォリオ',
       title: '日本文学科 在学生',
       ctaInternship: '日本での実習を見る',
       ctaAbout: '略歴と学問',
@@ -427,7 +427,7 @@ export const translations: Record<SiteLanguage, Translations> = {
       cvButton: 'Preview CV',
     },
     hero: {
-      storyLabel: 'My Story',
+      storyLabel: 'PORTFOLIO',
       title: 'Japanese Literature Student',
       ctaInternship: 'Explore Internship',
       ctaAbout: 'Biography & Studies',

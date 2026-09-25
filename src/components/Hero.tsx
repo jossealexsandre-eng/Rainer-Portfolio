@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Upload } from 'lucide-react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { PortfolioData } from '../types';
 import { useLanguage } from '../context/LanguageContext';
@@ -11,15 +10,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ data }) => {
   const { language, t } = useLanguage();
   const th = t.hero;
-  const [portraitSrc, setPortraitSrc] = useState<string>(data.portraitUrl || '');
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setPortraitSrc(url);
-    }
-  };
+  const portraitSrc = data.portraitUrl || '';
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -147,65 +138,19 @@ export const Hero: React.FC<HeroProps> = ({ data }) => {
         >
           <motion.div
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
-            className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] bg-white border border-[#D9D5CC] p-1.5 sm:p-2 shadow-[0_16px_45px_-15px_rgba(38,59,80,0.12)] hover:shadow-[0_22px_55px_-15px_rgba(38,59,80,0.18)] transition-all rounded-[2px]"
+            className="relative w-full max-w-sm sm:max-w-md aspect-[4/5] shadow-[0_16px_45px_-15px_rgba(38,59,80,0.18)] hover:shadow-[0_24px_60px_-15px_rgba(38,59,80,0.25)] transition-all rounded-[2px] overflow-hidden group"
           >
-            {/* Inner frame */}
-            <div className="relative w-full h-full border border-[#D9D5CC]/60 bg-[#F7F5F0] overflow-hidden group">
-              {portraitSrc ? (
-                <>
-                  <img
-                    src={portraitSrc}
-                    alt={th.portraitAlt}
-                    className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-103 transition-transform duration-700"
-                  />
-                  {/* Subtle upload control on hover */}
-                  <label
-                    htmlFor="portrait-upload"
-                    title={language === 'ja' ? '写真を変更' : 'Upload Portrait'}
-                    className="absolute bottom-3 right-3 z-20 cursor-pointer p-2 rounded-full bg-black/60 hover:bg-black/85 text-white/90 hover:text-white border border-white/20 transition-all opacity-0 group-hover:opacity-100 shadow-md backdrop-blur-xs"
-                  >
-                    <Upload className="w-3.5 h-3.5" />
-                    <input
-                      id="portrait-upload"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                    />
-                  </label>
-                </>
-              ) : (
-                <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-xs p-4 h-full">
-                  <div className="w-12 h-12 rounded-full border border-[#D9D5CC] flex items-center justify-center text-[#263B50]/60">
-                    <span className="font-serif text-lg">肖像</span>
-                  </div>
-                  <div className="space-y-1">
-                    <span className="font-serif tracking-[0.2em] text-xs uppercase text-[#263B50] block font-semibold">
-                      {language === 'ja' ? '写真' : 'PORTRAIT IMAGE'}
-                    </span>
-                    <p className="text-xs text-[#66645F] font-sans leading-relaxed">
-                      {language === 'ja' ? 'プロフィール写真をアップロード' : 'Replace with professional portrait photograph'}
-                    </p>
-                  </div>
-
-                  <label
-                    htmlFor="portrait-upload"
-                    className="mt-2 inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFFFF] border border-[#D9D5CC] rounded-[2px] text-[11px] font-sans text-[#263B50] cursor-pointer hover:bg-[#EFEBE3] transition-colors"
-                  >
-                    <Upload className="w-3 h-3" />
-                    <span>{language === 'ja' ? '写真を変更' : 'Upload Portrait'}</span>
-                    <input
-                      id="portrait-upload"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                    />
-                  </label>
-                </div>
-              )}
-            </div>
-
+            {portraitSrc ? (
+              <img
+                src={portraitSrc}
+                alt={th.portraitAlt}
+                className="w-full h-full object-cover object-top grayscale contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#EFEBE3] flex items-center justify-center">
+                <span className="font-serif text-2xl text-[#263B50]/40">肖像</span>
+              </div>
+            )}
             {/* Corner aesthetic registration lines */}
             <div className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 border-[#263B50]/40" />
             <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#263B50]/40" />

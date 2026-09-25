@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  Upload,
   BookOpen,
   Compass,
   Award,
@@ -23,16 +22,8 @@ interface InternshipSectionProps {
 export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) => {
   const { language, t: fullT } = useLanguage();
   const t = fullT.internship;
-  const [heroImageSrc, setHeroImageSrc] = useState<string>(data.heroImage || '');
+  const heroImageSrc = data.heroImage || '';
   const [narrativeTab, setNarrativeTab] = useState<'experience' | 'learning' | 'reflection'>('experience');
-
-  const handleHeroUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setHeroImageSrc(url);
-    }
-  };
 
   const facts = [
     { label: t.facts.organizationLabel, value: t.facts.organizationValue, sub: t.facts.organizationSub },
@@ -248,22 +239,10 @@ export const InternshipSection: React.FC<InternshipSectionProps> = ({ data }) =>
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-[#F7F5F0] to-[#EFEBE3]">
-              <div className="w-16 h-16 rounded-full border border-[#D9D5CC] flex items-center justify-center mb-4 text-[#263B50]">
-                <Flag className="w-8 h-8 text-[#B4473F]" />
-              </div>
-              <span className="font-serif tracking-[0.25em] text-sm uppercase text-[#263B50] font-semibold mb-1">
-                OSAKA GOLF CLUB HERO PHOTO
+              <Flag className="w-10 h-10 text-[#B4473F] mb-3" />
+              <span className="font-serif tracking-[0.25em] text-sm uppercase text-[#263B50] font-semibold">
+                OSAKA GOLF CLUB
               </span>
-              <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-[#FFFFFF] border border-[#D9D5CC] rounded-[2px] text-xs font-sans text-[#263B50] hover:bg-[#EFEBE3] transition-colors shadow-sm">
-                <Upload className="w-3.5 h-3.5" />
-                <span>Upload Authentic Photo</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleHeroUpload}
-                />
-              </label>
             </div>
           )}
 
